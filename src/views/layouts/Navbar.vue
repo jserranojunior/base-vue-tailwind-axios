@@ -20,7 +20,7 @@
           <a
             href="#"
             class="text-lg font-semibold tracking-widest uppercase rounded-lg text-white focus:outline-none focus:shadow-outline"
-            >Intellect</a
+            >{{ appName }}</a
           >
           <button
             class="md:hidden rounded-lg focus:outline-none focus:shadow-outline"
@@ -61,29 +61,14 @@
             href="#"
             >Login
           </router-link>
-          <router-link
-            v-if="auth.token"
-            :to="{ name: 'Cadastro' }"
-            class="px-4 py-2 mt-2 text-sm font-semibold rounded-lg focus:shadow-outline mx-1 md:mt-0 text-gray-400 hover:bg-gray-900 focus:bg-gray-600 hover:text-bg-gray-300"
-            href="#"
-            >Cadastro
-          </router-link>
-          <router-link
-            v-if="auth.token"
-            :to="{ name: 'Financeiro' }"
-            class="px-4 py-2 mt-2 text-sm font-semibold rounded-lg focus:shadow-outline mx-1 md:mt-0 text-gray-400 hover:bg-gray-900 focus:bg-gray-600 hover:text-bg-gray-300"
-            href="#"
-          >
-            Financeiro</router-link
-          >
 
-          <a
+          <!-- <a
             v-if="auth.token"
             @click="Logout()"
             class="px-4 py-2 mt-2 text-sm font-semibold rounded-lg focus:shadow-outline mx-1 md:mt-0 text-gray-400 hover:bg-gray-900 focus:bg-gray-600 hover:text-bg-gray-300"
             href="#"
             >Sair
-          </a>
+          </a> -->
         </nav>
       </div>
     </div>
@@ -97,12 +82,13 @@
   export default {
     setup() {
       const useAuth = inject("auth");
+      const appName = process.env.VUE_APP_NAME;
 
       const { closeSidebar, open } = useLayouts();
 
       const { Logout, auth, fields } = useAuth;
 
-      return { Logout, auth, closeSidebar, open, fields };
+      return { Logout, auth, closeSidebar, open, fields, appName };
     },
   };
 </script>

@@ -1,8 +1,8 @@
 <template>
-  <div class="bg-black">
+  <div class="bg-gray-900 ">
     <Navbar></Navbar>
-    <Sidebar></Sidebar>
-    <div class="bg-gray-900 min-h-full">
+    <!-- <Sidebar></Sidebar> -->
+    <div class="bg-gray-900 h-screen">
       <router-view />
     </div>
   </div>
@@ -10,7 +10,7 @@
 
 <script>
   import Navbar from "./Navbar";
-  import Sidebar from "./Sidebar";
+  // import Sidebar from "./Sidebar";
   import { inject } from "vue";
 
   export default {
@@ -22,7 +22,7 @@
     name: "Main",
     components: {
       Navbar,
-      Sidebar,
+      // Sidebar,
     },
   };
 </script>
