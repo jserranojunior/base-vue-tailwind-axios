@@ -1,0 +1,8 @@
+!!  Fazer
+
+☐ Cada função vai ter varias rotas
+☐ Quando fizer login o usuario puxa as FUNÇÔES em que ele esta habilitado
+    ☐  Posso concatenar aqui as rotas
+
+☐ Quando acessar a rota 
+    ☐ Verifica se no usuarioFuncoes tem a rota com o ID 

@@ -50,10 +50,12 @@
           "
         >
           <router-link
+            v-show="routesEnable[1]"
             :to="{ name: 'Home' }"
             class="px-4 py-2 mt-2 text-sm font-semibold rounded-lg focus:shadow-outline mx-1 md:mt-0 text-gray-400 hover:bg-gray-900 focus:bg-gray-600 hover:text-bg-gray-300"
-            >Home
+            >Homes
           </router-link>
+
           <router-link
             v-if="!auth.token"
             :to="{ name: 'Login' }"
@@ -82,13 +84,27 @@
   export default {
     setup() {
       const useAuth = inject("auth");
+      const useAcl = inject("acl");
+      const { checkAclName, routesEnable, setRoutesEnable } = useAcl;
+      setRoutesEnable();
+      routesEnable.value[27] = 27;
+
       const appName = process.env.VUE_APP_NAME;
 
       const { closeSidebar, open } = useLayouts();
 
       const { Logout, auth, fields } = useAuth;
 
-      return { Logout, auth, closeSidebar, open, fields, appName };
+      return {
+        Logout,
+        auth,
+        closeSidebar,
+        open,
+        fields,
+        appName,
+        checkAclName,
+        routesEnable,
+      };
     },
   };
 </script>

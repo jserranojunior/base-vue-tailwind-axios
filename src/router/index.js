@@ -1,7 +1,10 @@
 import { createWebHistory, createRouter } from "vue-router";
 // import VueRouterMultiguard from "vue-router-multiguard";
 import { AuthMiddleware } from "./middlewares/AuthMiddleware";
+
+import { AclMiddleware } from "./middlewares/AclMiddleware";
 const { auth } = AuthMiddleware();
+const { acl } = AclMiddleware();
 
 import Home from "@/modules/institucional/home";
 // import FinanceiroIndex from "@/modules/financeiro/pages/FinanceiroIndex";
@@ -15,6 +18,8 @@ const routes = [
     path: "/",
     name: "Home",
     component: Home,
+    meta: { id: 0, acl: "public" },
+    beforeEnter: [acl],
   },
   {
     path: "/login",
